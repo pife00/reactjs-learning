@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Radium from "radium";
 import Person from "./Person/Person";
 
 class App extends React.Component {
@@ -53,6 +54,10 @@ class App extends React.Component {
     const style = {
       backgroundColor: "white",
       border: "1x solid blue",
+      ':hover':{
+        backgroundColor:'lightgreen'
+      }
+
     };
 
     let persons = null;
@@ -75,6 +80,7 @@ class App extends React.Component {
       );
       style.backgroundColor = 'green'
       style.color = 'white'
+
     }
 
     let classes = [];
@@ -89,7 +95,7 @@ class App extends React.Component {
         <div className="constrain">
           <h1 className={classes} >Hello</h1>
           <hr />
-          <button style={style} onClick={this.togglePerson}>
+          <button style={style} key='01' onClick={this.togglePerson}>
             Switch name
           </button>
 
@@ -107,4 +113,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Radium(App);
