@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import Radium from "radium";
+import Radium,{StyleRoot} from "radium";
 import Person from "./Person/Person";
-
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary"
 class App extends React.Component {
   state = {
     person: [
@@ -66,13 +66,15 @@ class App extends React.Component {
         <div>
           {this.state.person.map((person,index) => {
             return (
-              <Person
-                name={person.name}
-                age={person.age}
-                key={person.id}
-                change={(event) => this.nameHandler(event,person.id)}
-                click={ ()=> this.deletePerson(index)}
-              />
+              
+                <Person
+                  name={person.name}
+                  age={person.age}
+                  key={person.id}
+                  change={(event) => this.nameHandler(event,person.id)}
+                  click={ ()=> this.deletePerson(index)}
+                />
+              
             );
 
           })}
@@ -91,6 +93,7 @@ class App extends React.Component {
     }
 
     return (
+      <StyleRoot>
       <div className="App">
         <div className="constrain">
           <h1 className={classes} >Hello</h1>
@@ -109,6 +112,7 @@ class App extends React.Component {
           ) : null}
         </div>
       </div>
+      </StyleRoot>
     );
   }
 }
