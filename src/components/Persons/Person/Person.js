@@ -3,9 +3,6 @@ import Radium from "radium";
 
 const person = (props) => {
 
-  const pressKey = (event) =>{
-    console.log(event.target.value)
-  }
 
   const style = {
     '@media(min-width:500px)':{

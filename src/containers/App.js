@@ -1,9 +1,15 @@
 import React from "react";
 import "./App.css";
+import Cockpit from '../components/Cockpit/Cockpit'
 import Radium,{StyleRoot} from "radium";
 import Persons from "../components/Persons/Persons";
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"
 class App extends React.Component {
+
+  constructor(props){
+    super(props)
+  }
+
+
   state = {
     person: [
       { id:'1', name: "Pipe", age: 27 },
@@ -51,15 +57,8 @@ class App extends React.Component {
   addPerson = () => {};
 
   render() {
-    const style = {
-      backgroundColor: "white",
-      border: "1x solid blue",
-      ':hover':{
-        backgroundColor:'lightgreen'
-      }
-
-    };
-
+    
+    let hello = null;
     let persons = null;
     if (this.state.showPerson) {
       persons = (
@@ -70,10 +69,15 @@ class App extends React.Component {
         persons={this.state.person} />
         </div>
       );
-      style.backgroundColor = 'green'
-      style.color = 'white'
-
     }
+    hello = (
+      <Cockpit
+      title={this.props.appTitle}
+      togglePerson={this.togglePerson}
+      addPerson={this.addPerson}
+      ></Cockpit>
+    )
+    
 
     let classes = [];
     if(this.state.showPerson){
@@ -86,15 +90,7 @@ class App extends React.Component {
       <StyleRoot>
       <div className="App">
         <div className="constrain">
-          <h1 className={classes} >Hello</h1>
-          <hr />
-          <button style={style} key='01' onClick={this.togglePerson}>
-            Switch name
-          </button>
-
-          <button style={style} onClick={this.addPerson}>
-            Add Person
-          </button>
+         {hello}
           {this.state.showPerson ? (
             <div>
               {persons}
