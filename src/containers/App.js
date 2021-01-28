@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 import Radium,{StyleRoot} from "radium";
-import Person from "./Person/Person";
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary"
+import Persons from "../components/Persons/Persons";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"
 class App extends React.Component {
   state = {
     person: [
@@ -64,20 +64,10 @@ class App extends React.Component {
     if (this.state.showPerson) {
       persons = (
         <div>
-          {this.state.person.map((person,index) => {
-            return (
-              
-                <Person
-                  name={person.name}
-                  age={person.age}
-                  key={person.id}
-                  change={(event) => this.nameHandler(event,person.id)}
-                  click={ ()=> this.deletePerson(index)}
-                />
-              
-            );
-
-          })}
+        <Persons
+        delete={this.deletePerson}
+        change={this.nameHandler}
+        persons={this.state.person} />
         </div>
       );
       style.backgroundColor = 'green'
