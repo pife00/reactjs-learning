@@ -64,6 +64,7 @@ class App extends React.Component {
     if (this.state.showPerson) {
       persons = (
         <div>
+          
           {this.state.person.map((person,index) => {
             return (
               <Person
