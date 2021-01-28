@@ -1,4 +1,5 @@
 import React from "react";
+import Radium from "radium";
 
 const person = (props) => {
 
@@ -6,8 +7,14 @@ const person = (props) => {
     console.log(event.target.value)
   }
 
+  const style = {
+    '@media(min-width:500px)':{
+      width:'450px'
+    }
+  }
+
   return (
-    <div>
+    <div key='01' style={style}>
       <p onClick={props.click} >Hello Today I am {props.name} I am {props.age}  </p>
       <h1> {props.children} </h1>
       <input onChange={props.change} value={props.name} type="text" />
@@ -15,4 +22,4 @@ const person = (props) => {
   );
 };
 
-export default person;
+export default Radium(person);
