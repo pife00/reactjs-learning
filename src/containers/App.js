@@ -7,8 +7,17 @@ class App extends React.Component {
 
   constructor(props){
     super(props)
+    console.log('hello from React')
   }
 
+  static getDerivedStateFromProps(props,state){
+    console.log('getDerivedStateFromProps here',props);
+    return state;
+  }
+
+  componentDidMount(){
+    console.log('componentDidMounth here');
+  }
 
   state = {
     person: [
